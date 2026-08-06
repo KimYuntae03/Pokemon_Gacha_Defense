@@ -1,0 +1,27 @@
+# Unity
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+UserSettings/
+
+# IDE
+.vscode/
+.vs/
+.idea/
+
+# Visual Studio
+*.csproj
+*.sln
+*.slnx
+*.user
+*.tmp
+*.pidb
+*.booproj
+
+# OS
+.DS_Store
+Thumbs.db
+Desktop.ini
