@@ -1,0 +1,546 @@
+fileFormatVersion: 2
+guid: 040d504c5e6a84949856039e5a68d33c
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1990488966959477409
+    second: LUCARIO 1_0
+  - first:
+      213: -4522114834557291864
+    second: LUCARIO 1_1
+  - first:
+      213: -4495184569759791724
+    second: LUCARIO 1_2
+  - first:
+      213: -4310193716209520152
+    second: LUCARIO 1_3
+  - first:
+      213: -7900820468724429291
+    second: LUCARIO 1_4
+  - first:
+      213: -5716029489839614139
+    second: LUCARIO 1_5
+  - first:
+      213: -8139147008125646832
+    second: LUCARIO 1_6
+  - first:
+      213: 4567464258368831356
+    second: LUCARIO 1_7
+  - first:
+      213: 2706448689738483061
+    second: LUCARIO 1_8
+  - first:
+      213: 6651139140789254559
+    second: LUCARIO 1_9
+  - first:
+      213: -8387009753379161300
+    second: LUCARIO 1_10
+  - first:
+      213: 7500691337984272135
+    second: LUCARIO 1_11
+  - first:
+      213: 272765056600303035
+    second: LUCARIO 1_12
+  - first:
+      213: 694108551731557226
+    second: LUCARIO 1_13
+  - first:
+      213: 6937379902281304690
+    second: LUCARIO 1_14
+  - first:
+      213: -5316371124234725808
+    second: LUCARIO 1_15
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: LUCARIO 1_0
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 197
+        width: 36
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f5dcb03a4dc5064e0800000000000000
+      internalID: -1990488966959477409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LUCARIO 1_1
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 195
+        width: 36
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a230b464883e31c0800000000000000
+      internalID: -4522114834557291864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LUCARIO 1_2
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 197
+        width: 36
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49586a74375ed91c0800000000000000
+      internalID: -4495184569759791724
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LUCARIO 1_3
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 195
+        width: 36
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e1f538c6ad1f24c0800000000000000
+      internalID: -4310193716209520152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LUCARIO 1_4
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 133
+        width: 40
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51e8b8fd4a5aa5290800000000000000
+      internalID: -7900820468724429291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LUCARIO 1_5
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 131
+        width: 40
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 547d37cb6759ca0b0800000000000000
+      internalID: -5716029489839614139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LUCARIO 1_6
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 133
+        width: 40
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 018ccfd4be0fb0f80800000000000000
+      internalID: -8139147008125646832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LUCARIO 1_7
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 131
+        width: 40
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c7ffd542b84e26f30800000000000000
+      internalID: 4567464258368831356
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LUCARIO 1_8
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 69
+        width: 40
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5750fa27ebc3f8520800000000000000
+      internalID: 2706448689738483061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LUCARIO 1_9
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 67
+        width: 40
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f99b07e2fc79d4c50800000000000000
+      internalID: 6651139140789254559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LUCARIO 1_10
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 69
+        width: 40
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2b391ac01b5b9b80800000000000000
+      internalID: -8387009753379161300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LUCARIO 1_11
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 67
+        width: 40
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 707e662180fc71860800000000000000
+      internalID: 7500691337984272135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LUCARIO 1_12
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 5
+        width: 36
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bb5ecc1bf5e09c300800000000000000
+      internalID: 272765056600303035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LUCARIO 1_13
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 3
+        width: 36
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a63358ddc08f1a900800000000000000
+      internalID: 694108551731557226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LUCARIO 1_14
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 5
+        width: 36
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27a496be346864060800000000000000
+      internalID: 6937379902281304690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LUCARIO 1_15
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 3
+        width: 36
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 05658dd31a47836b0800000000000000
+      internalID: -5316371124234725808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      LUCARIO 1_0: -1990488966959477409
+      LUCARIO 1_1: -4522114834557291864
+      LUCARIO 1_10: -8387009753379161300
+      LUCARIO 1_11: 7500691337984272135
+      LUCARIO 1_12: 272765056600303035
+      LUCARIO 1_13: 694108551731557226
+      LUCARIO 1_14: 6937379902281304690
+      LUCARIO 1_15: -5316371124234725808
+      LUCARIO 1_2: -4495184569759791724
+      LUCARIO 1_3: -4310193716209520152
+      LUCARIO 1_4: -7900820468724429291
+      LUCARIO 1_5: -5716029489839614139
+      LUCARIO 1_6: -8139147008125646832
+      LUCARIO 1_7: 4567464258368831356
+      LUCARIO 1_8: 2706448689738483061
+      LUCARIO 1_9: 6651139140789254559
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
