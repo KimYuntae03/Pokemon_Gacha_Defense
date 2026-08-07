@@ -5,7 +5,7 @@ public class EnemyMovement : MonoBehaviour
 {
     [Header("이동 설정")]
     [SerializeField]
-    private float moveSpeed = 2f;
+    private float moveSpeed = 4f;
 
     [SerializeField]
     private float arrivalDistance = 0.05f;
@@ -37,6 +37,11 @@ public class EnemyMovement : MonoBehaviour
     private void Awake()
     {
         animator = GetComponent<Animator>();
+    }
+
+    public void SetPath(Transform[] newPath)
+    {
+        pathPoints = newPath;
     }
 
     private void Start()

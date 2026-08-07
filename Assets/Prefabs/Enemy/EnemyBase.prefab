@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d5f15f21d23d994eb6925f91ec22140, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
-  moveSpeed: 2
+  moveSpeed: 4
   arrivalDistance: 0.05
   directionTolerance: 0.05
   pathPoints: []
