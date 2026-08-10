@@ -7,13 +7,6 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField]
     private GameObject enemyPrefab;
 
-    [Header("스폰 설정")]
-    [SerializeField]
-    private int spawnCount = 20;
-
-    [SerializeField]
-    private float spawnDuration = 30f;
-
     [Header("이동 경로")]
     [SerializeField]
     private Transform[] pathPoints;
@@ -22,24 +15,41 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField]
     private Transform enemiesParent;
 
-    private void Start()
+    public IEnumerator SpawnWave(WaveData waveData)
     {
         if (!ValidateSettings())
         {
-            enabled = false;
-            return;
+            yield break;
         }
 
-        StartCoroutine(SpawnEnemies());
-    }
+        if (waveData == null)
+        {
+            Debug.LogError(
+                $"{gameObject.name}: WaveData가 없습니다.",
+                this
+            );
 
-    private IEnumerator SpawnEnemies()
-    {
-        float spawnInterval = spawnDuration / (spawnCount-1);
+            yield break;
+        }
+
+        if (waveData.enemyData == null)
+        {
+            Debug.LogError(
+                $"{gameObject.name}: WaveData에 EnemyData가 없습니다.",
+                this
+            );
+
+            yield break;
+        }
+
+
+        int spawnCount = waveData.spawnCount;
+        float spawnInterval = waveData.spawnInterval;
+
 
         for (int i = 0; i < spawnCount; i++)
         {
-            SpawnEnemy();
+            SpawnEnemy(waveData.enemyData);
 
             if (i < spawnCount - 1)
             {
@@ -47,11 +57,10 @@ public class EnemySpawner : MonoBehaviour
             }
         }
     }
-
-    private void SpawnEnemy()
+    private void SpawnEnemy(EnemyData enemyData)
     {
+        // Point_00 위치에 적 생성
         Vector3 spawnPosition = pathPoints[0].position;
-        //Point_00은 적 생성 위치로만 사용
 
         GameObject spawnedEnemy = Instantiate(
             enemyPrefab,
@@ -60,14 +69,17 @@ public class EnemySpawner : MonoBehaviour
             enemiesParent
         );
 
-        //방금 생성된 적의 EnemyMovement를 가져옴
+        // -------------------------
+        // 이동 경로 전달
+        // -------------------------
+
         EnemyMovement enemyMovement =
             spawnedEnemy.GetComponent<EnemyMovement>();
 
         if (enemyMovement == null)
         {
             Debug.LogError(
-                $"{spawnedEnemy.name}에 EnemyMovement가 없습니다.",
+                $"{spawnedEnemy.name}: EnemyMovement가 없습니다.",
                 spawnedEnemy
             );
 
@@ -75,9 +87,32 @@ public class EnemySpawner : MonoBehaviour
             return;
         }
 
-        //새로 생성된 Enemy에 이동 포인트들을 전달
         enemyMovement.SetPath(pathPoints);
+
+
+        // -------------------------
+        // 애니메이션 교체
+        // -------------------------
+
+        EnemyAnimator enemyAnimator =
+            spawnedEnemy.GetComponent<EnemyAnimator>();
+
+        if (enemyAnimator == null)
+        {
+            Debug.LogError(
+                $"{spawnedEnemy.name}: EnemyAnimator가 없습니다.",
+                spawnedEnemy
+            );
+
+            Destroy(spawnedEnemy);
+            return;
+        }
+
+        enemyAnimator.SetAnimatorController(
+            enemyData.animatorOverrideController
+        );
     }
+
 
     private bool ValidateSettings()
     {
@@ -105,26 +140,6 @@ public class EnemySpawner : MonoBehaviour
         {
             Debug.LogError(
                 $"{gameObject.name}: Point_00이 등록되지 않았습니다.",
-                this
-            );
-
-            return false;
-        }
-
-        if (spawnCount <= 0)
-        {
-            Debug.LogError(
-                $"{gameObject.name}: Spawn Count는 1 이상이어야 합니다.",
-                this
-            );
-
-            return false;
-        }
-
-        if (spawnDuration < 0f)
-        {
-            Debug.LogError(
-                $"{gameObject.name}: Spawn Duration은 0 이상이어야 합니다.",
                 this
             );
 

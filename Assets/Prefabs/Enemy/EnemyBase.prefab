@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2849043518950354304}
   - component: {fileID: 1336997163607556750}
   - component: {fileID: -5189972645113116680}
+  - component: {fileID: -4673737804285499909}
   m_Layer: 0
   m_Name: EnemyBase
   m_TagString: Untagged
@@ -131,3 +132,15 @@ MonoBehaviour:
   arrivalDistance: 0.05
   directionTolerance: 0.05
   pathPoints: []
+--- !u!114 &-4673737804285499909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6207786190852165813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c894e46e7d6a4244f9384462b4cc0252, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyAnimator
