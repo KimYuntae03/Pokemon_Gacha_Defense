@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Wave28_Override
+  m_Controller: {fileID: 9100000, guid: 032ee92dae02c664c897b61e2410b402, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 31134f2938a88b0499ef2a35dc398236, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 363f223ca4286674b9273cb234d9986c, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: e87878bfe4eb1a64bb3e7d81cbafe32e, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 59d9f6f02f4aac342a1f7b87d780bd35, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: f048f950f59987f4180c877b4e73b824, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 951162cb73d81e041a6b166c65d128b8, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 743c38f8c777cbd44983225ad8cddb9a, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 6a8cc4bd2c617584096d3f49a34a0d8d, type: 2}
