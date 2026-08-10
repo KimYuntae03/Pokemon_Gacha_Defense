@@ -111,6 +111,28 @@ public class EnemySpawner : MonoBehaviour
         enemyAnimator.SetAnimatorController(
             enemyData.animatorOverrideController
         );
+        
+        enemyMovement.SetSpeed(
+            enemyData.moveSpeed
+        );
+
+        EnemyHealth enemyHealth =
+        spawnedEnemy.GetComponent<EnemyHealth>();
+
+        if (enemyHealth == null)
+        {
+            Debug.LogError(
+                $"{spawnedEnemy.name}: EnemyHealth가 없습니다.",
+                spawnedEnemy
+            );
+
+            Destroy(spawnedEnemy);
+            return;
+        }
+
+        enemyHealth.SetHealth(
+            enemyData.maxHealth
+        );
     }
 
 

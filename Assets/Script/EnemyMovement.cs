@@ -67,6 +67,11 @@ public class EnemyMovement : MonoBehaviour
         MoveToCurrentPoint();
     }
 
+    public void SetSpeed(float speed)
+    {
+        moveSpeed = speed;
+    }
+
     private void MoveToCurrentPoint()
     {
         Transform targetPoint = pathPoints[currentPointIndex];
