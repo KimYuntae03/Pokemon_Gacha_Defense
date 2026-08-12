@@ -11,7 +11,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Ally
   - 
   - 
   - 
@@ -55,6 +55,9 @@ TagManager:
     locked: 0
   - name: NPC
     uniqueID: 3177567015
+    locked: 0
+  - name: Ally
+    uniqueID: 984398545
     locked: 0
   m_RenderingLayers:
   - Default

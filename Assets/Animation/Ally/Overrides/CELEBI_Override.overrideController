@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: CELEBI_Override
+  m_Controller: {fileID: 9100000, guid: 6874b6ff836944f4caf4a41d5b038980, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: c43312beb55813d43b0db7df225d2bb8, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 2b61c0c692d0a9e41b231eabf60590df, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 4c52ecd7fccde1647b6545733bf13680, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: bbc03fc73eeec5a49a50c3b30a5e5910, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 3183be0130cea9d46ba11e2cff512140, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: f0cd65210ba218a40a4ded081daf3992, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 6287b52d5aa726340bdbf716a255ffce, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 3d4bc90fbaa214e419c16478b7d16fe6, type: 2}
