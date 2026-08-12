@@ -119,6 +119,9 @@ public class AllyManager : MonoBehaviour
         allyDrag.SetAllyFloor(
             allyFloorTilemap
         );
+        allyDrag.SetDirectionCenter(
+            allySpawnCenter
+        );
 
         currentAllyCount++;
 

@@ -19,6 +19,9 @@ public class AllyDrag : MonoBehaviour,
 
     private Collider2D allyCollider;
 
+    private Transform directionCenter;
+    private AllyAnimator allyAnimator;
+
     public void SetAllyFloor(Tilemap tilemap)
     {
         allyFloorTilemap = tilemap;
@@ -28,10 +31,17 @@ public class AllyDrag : MonoBehaviour,
     {
         mainCamera = Camera.main;
 
+        allyAnimator =
+            GetComponent<AllyAnimator>();
+
         allyCollider =
             GetComponent<Collider2D>();
     }
 
+    public void SetDirectionCenter(Transform center)
+    {
+        directionCenter = center;
+    }
 
     public void OnBeginDrag(
         PointerEventData eventData
@@ -85,6 +95,8 @@ public class AllyDrag : MonoBehaviour,
 
             return;
         }
+        
+        UpdateDirection();
 
         Debug.Log(
             $"{gameObject.name} 배치 완료: {transform.position}"
@@ -144,5 +156,53 @@ public class AllyDrag : MonoBehaviour,
 
 
         return false;
+    }
+
+    private void UpdateDirection()
+    {
+        if (directionCenter == null ||
+            allyAnimator == null)
+        {
+            return;
+        }
+
+        Vector2 direction =
+            transform.position -
+            directionCenter.position;
+
+        float angle =
+            Mathf.Atan2(direction.y, direction.x)
+            * Mathf.Rad2Deg;
+
+        // 11시 ~ 1시
+        if (angle >= 60f && angle < 120f)
+        {
+            allyAnimator.SetDirection(
+                AllyDirection.Up
+            );
+        }
+        // 7시 ~ 11시
+        else if (angle >= 120f ||
+                angle < -120f)
+        {
+            allyAnimator.SetDirection(
+                AllyDirection.Left
+            );
+        }
+        // 5시 ~ 7시
+        else if (angle >= -120f &&
+                angle < -60f)
+        {
+            allyAnimator.SetDirection(
+                AllyDirection.Down
+            );
+        }
+        // 1시 ~ 5시
+        else
+        {
+            allyAnimator.SetDirection(
+                AllyDirection.Right
+            );
+        }
     }
 }
