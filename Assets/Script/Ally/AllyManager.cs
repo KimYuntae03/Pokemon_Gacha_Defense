@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class AllyManager : MonoBehaviour
 {
@@ -20,6 +21,10 @@ public class AllyManager : MonoBehaviour
     [Header("아군 겹침 검사")]
     [SerializeField]
     private LayerMask allyLayer;
+
+    [Header("아군 배치 가능 영역")]
+    [SerializeField]
+    private Tilemap allyFloorTilemap;
 
     [SerializeField]
     private float spawnCheckRadius = 0.6f;
@@ -98,6 +103,23 @@ public class AllyManager : MonoBehaviour
         allyAnimator.SetAnimatorController(
             allyData.animatorOverrideController
         );
+        AllyDrag allyDrag = spawnedAlly.GetComponent<AllyDrag>();
+
+        if (allyDrag == null)
+        {
+            Debug.LogError(
+                $"{spawnedAlly.name}: AllyDrag가 없습니다.",
+                spawnedAlly
+            );
+
+            Destroy(spawnedAlly);
+            return null;
+        }
+
+        allyDrag.SetAllyFloor(
+            allyFloorTilemap
+        );
+
         currentAllyCount++;
 
         Debug.Log(
@@ -111,7 +133,8 @@ public class AllyManager : MonoBehaviour
 
     private Vector3 FindSpawnPosition()
     {
-        if (currentAllyCount == 0)
+        if (currentAllyCount == 0 &&
+            IsPositionFree(allySpawnCenter.position))
         {
             return allySpawnCenter.position;
         }

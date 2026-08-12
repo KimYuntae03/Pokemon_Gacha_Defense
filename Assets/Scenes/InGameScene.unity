@@ -20197,6 +20197,7 @@ MonoBehaviour:
   allyLayer:
     serializedVersion: 2
     m_Bits: 64
+  allyFloorTilemap: {fileID: 1994761391}
   spawnCheckRadius: 0.6
   maxSearchRing: 10
 --- !u!1 &964382538
