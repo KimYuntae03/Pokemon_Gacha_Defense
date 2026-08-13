@@ -29,4 +29,11 @@ public class AllyData : ScriptableObject
 
     [Header("애니메이션")]
     public AnimatorOverrideController animatorOverrideController;
+
+    [Header("전투 능력치")]
+    public float attackDamage = 10f; //공격력
+
+    public float attackInterval = 1f; //쿨타임
+
+    public float attackRange = 4f; //사거리
 }
