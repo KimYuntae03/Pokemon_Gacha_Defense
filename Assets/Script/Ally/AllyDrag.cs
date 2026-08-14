@@ -22,6 +22,13 @@ public class AllyDrag : MonoBehaviour,
     private Transform directionCenter;
     private AllyAnimator allyAnimator;
 
+    private bool isDragging; //아군 유닛을 드래그중인지 확인
+
+    public bool IsDragging
+    {
+        get { return isDragging; }
+    }
+
     public void SetAllyFloor(Tilemap tilemap)
     {
         allyFloorTilemap = tilemap;
@@ -43,11 +50,11 @@ public class AllyDrag : MonoBehaviour,
         directionCenter = center;
     }
 
-    public void OnBeginDrag(
-        PointerEventData eventData
-    )
+    public void OnBeginDrag(PointerEventData eventData)
     {
         // 드래그 시작 전 위치 저장
+        isDragging = true;
+
         originalPosition =
             transform.position;
     }
@@ -72,13 +79,11 @@ public class AllyDrag : MonoBehaviour,
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        isDragging = false;
+        
         if (!IsInsideAllyFloor())
         {
             transform.position = originalPosition;
-
-            Debug.Log(
-                $"{gameObject.name}: 배치 가능 영역 밖입니다."
-            );
 
             return;
         }
@@ -86,12 +91,7 @@ public class AllyDrag : MonoBehaviour,
         if (IsOverlappingOtherAlly())
         {
             // 겹쳤으면 원래 위치로 복귀
-            transform.position =
-                originalPosition;
-
-            Debug.Log(
-                $"{gameObject.name}: 다른 아군과 겹쳐서 배치할 수 없습니다."
-            );
+            transform.position = originalPosition;
 
             return;
         }

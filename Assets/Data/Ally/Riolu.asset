@@ -16,3 +16,7 @@ MonoBehaviour:
   grade: 0
   allyPrefab: {fileID: 2624290616382295073, guid: a1c4d31b554a0374bb56685cfb261d39, type: 3}
   animatorOverrideController: {fileID: 22100000, guid: f167b08fe9d2c1348827aed2ad9e3f4d, type: 2}
+  attackDamage: 50
+  attackInterval: 1
+  attackRange: 4
+  projectilePrefab: {fileID: 6785212003771102999, guid: 7d81a59c66698b142a246933e10dfa72, type: 3}

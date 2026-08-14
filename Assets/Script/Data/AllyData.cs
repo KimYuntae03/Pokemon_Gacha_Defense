@@ -36,4 +36,7 @@ public class AllyData : ScriptableObject
     public float attackInterval = 1f; //쿨타임
 
     public float attackRange = 4f; //사거리
+    
+    [Header("투사체")]
+    public GameObject projectilePrefab;
 }

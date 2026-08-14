@@ -32,6 +32,10 @@ public class AllyManager : MonoBehaviour
     [SerializeField]
     private int maxSearchRing = 10;
 
+    [Header("아군 공격")]
+    [SerializeField]
+    private LayerMask enemyLayer;
+
     private int currentAllyCount;
 
 
@@ -121,6 +125,25 @@ public class AllyManager : MonoBehaviour
         );
         allyDrag.SetDirectionCenter(
             allySpawnCenter
+        );
+
+        AllyAttack allyAttack =
+            spawnedAlly.GetComponent<AllyAttack>();
+
+        if (allyAttack == null)
+        {
+            Debug.LogError(
+                $"{spawnedAlly.name}: AllyAttack이 없습니다.",
+                spawnedAlly
+            );
+
+            Destroy(spawnedAlly);
+            return null;
+        }
+
+        allyAttack.Initialize(
+            allyData,
+            enemyLayer
         );
 
         currentAllyCount++;
