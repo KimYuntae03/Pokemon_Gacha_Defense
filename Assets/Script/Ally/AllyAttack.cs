@@ -11,15 +11,19 @@ public class AllyAttack : MonoBehaviour
     private LayerMask enemyLayer;
 
     private AllyDrag allyDrag;//AllyDrag에서 유닉이 드래그해서 이동중인가?
+    
+    private Transform[] globalAttackPoints;
 
     public void Initialize(
         AllyData data,
-        LayerMask targetLayer
+        LayerMask targetLayer,
+        Transform[] attackPoints
     )
     {
         allyData = data;
         enemyLayer = targetLayer;
-
+        globalAttackPoints = attackPoints;
+        
         allyDrag = GetComponent<AllyDrag>();
 
         attackTimer = 0f;
@@ -118,50 +122,125 @@ public class AllyAttack : MonoBehaviour
 
 
     private void Attack()
+{
+    if (currentTarget == null)
     {
-        if (currentTarget == null)
+        return;
+    }
+
+    switch (allyData.attackType)
+    {
+        case AllyAttackType.Projectile:
+            FireProjectile();
+            break;
+
+        case AllyAttackType.TargetArea:
+            AttackTargetArea();
+            break;
+
+        case AllyAttackType.GlobalArea:
+            AttackGlobalArea();
+            break;
+    }
+}
+
+    private void FireProjectile()
+    {
+        if (allyData.attackPrefab == null)
         {
             return;
         }
-
-        if (allyData.projectilePrefab == null)
-        {
-            Debug.LogWarning(
-                $"{gameObject.name}: 투사체 Prefab이 없습니다.",
-                this
-            );
-
-            return;
-        }
-
 
         GameObject projectileObject =
             Instantiate(
-                allyData.projectilePrefab,
+                allyData.attackPrefab,
                 transform.position,
                 Quaternion.identity
             );
-
 
         Projectile projectile =
             projectileObject.GetComponent<Projectile>();
 
         if (projectile == null)
         {
-            Debug.LogError(
-                $"{allyData.projectilePrefab.name}에 Projectile 스크립트가 없습니다.",
-                allyData.projectilePrefab
-            );
-
             Destroy(projectileObject);
 
             return;
         }
 
-
         projectile.Initialize(
             currentTarget,
             allyData.attackDamage
         );
+    }
+
+    private void AttackTargetArea()
+    {
+        if (currentTarget == null)
+        {
+            return;
+        }
+
+        if (allyData.attackPrefab == null)
+        {
+            return;
+        }
+
+        Vector3 attackPosition = currentTarget.position;
+
+        EnemyHealth enemyHealth = currentTarget.GetComponent<EnemyHealth>();
+
+        if (enemyHealth != null)
+        {
+            enemyHealth.TakeDamage(
+                allyData.attackDamage
+            );
+        }
+
+        Instantiate(
+            allyData.attackPrefab,
+            attackPosition,
+            Quaternion.identity
+        );
+    }
+
+    private void AttackGlobalArea()
+    {
+        if (allyData.attackPrefab == null)
+        {
+            return;
+        }
+
+        if (globalAttackPoints == null ||
+            globalAttackPoints.Length == 0)
+        {
+            return;
+        }
+
+
+        foreach (Transform point in globalAttackPoints)
+        {
+            if (point == null)
+            {
+                continue;
+            }
+
+            GameObject attackObject =
+                Instantiate(
+                    allyData.attackPrefab,
+                    point.position,
+                    Quaternion.identity
+                );
+
+            ArceusThunderAttack thunderAttack =
+                attackObject.GetComponent<ArceusThunderAttack>();
+
+            if (thunderAttack != null)
+            {
+                thunderAttack.Initialize(
+                    allyData.attackDamage
+                );
+            }
+        }
     }
 }

@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.InputSystem;
 
 public class AllyManager : MonoBehaviour
 {
@@ -36,6 +37,14 @@ public class AllyManager : MonoBehaviour
     [SerializeField]
     private LayerMask enemyLayer;
 
+    [Header("테스트용 아군 생성")]
+    [SerializeField]
+    private AllyData[] testAllyData;
+
+    [Header("전역 공격 위치")]
+    [SerializeField]
+    private Transform[] globalAttackPoints;
+
     private int currentAllyCount;
 
 
@@ -44,16 +53,49 @@ public class AllyManager : MonoBehaviour
         return currentAllyCount < maxAllyCount;
     }
 
+    private void Update()
+    {
+            if (Keyboard.current == null)
+        {
+            return;
+        }
+
+        if (testAllyData.Length > 0 &&
+            Keyboard.current.digit1Key.wasPressedThisFrame)
+        {
+            SpawnAlly(testAllyData[0]);
+        }
+
+        if (testAllyData.Length > 1 &&
+            Keyboard.current.digit2Key.wasPressedThisFrame)
+        {
+            SpawnAlly(testAllyData[1]);
+        }
+
+        if (testAllyData.Length > 2 &&
+            Keyboard.current.digit3Key.wasPressedThisFrame)
+        {
+            SpawnAlly(testAllyData[2]);
+        }
+
+        if (testAllyData.Length > 3 &&
+            Keyboard.current.digit4Key.wasPressedThisFrame)
+        {
+            SpawnAlly(testAllyData[3]);
+        }
+
+        if (testAllyData.Length > 4 &&
+            Keyboard.current.digit5Key.wasPressedThisFrame)
+        {
+            SpawnAlly(testAllyData[4]);
+        }
+    }
+
 
     public GameObject SpawnAlly(AllyData allyData)
     {
         if (allyData == null)
         {
-            Debug.LogError(
-                $"{gameObject.name}: AllyData가 전달되지 않았습니다.",
-                this
-            );
-
             return null;
         }
 
@@ -62,25 +104,17 @@ public class AllyManager : MonoBehaviour
             Debug.LogWarning(
                 $"아군 최대 수 {maxAllyCount}마리에 도달했습니다."
             );
-
             return null;
         }
 
         if (allyData.allyPrefab == null)
         {
-            Debug.LogError(
-                $"{allyData.allyName}: Ally Prefab이 등록되지 않았습니다.",
-                allyData
-            );
-
             return null;
         }
 
-        Vector3 spawnPosition =
-            FindSpawnPosition();
+        Vector3 spawnPosition = FindSpawnPosition();
 
-        GameObject spawnedAlly =
-            Instantiate(
+        GameObject spawnedAlly = Instantiate(
                 allyData.allyPrefab,
                 spawnPosition,
                 Quaternion.identity,
@@ -95,11 +129,6 @@ public class AllyManager : MonoBehaviour
 
         if (allyAnimator == null)
         {
-            Debug.LogError(
-                $"{spawnedAlly.name}: AllyAnimator가 없습니다.",
-                spawnedAlly
-            );
-
             Destroy(spawnedAlly);
             return null;
         }
@@ -132,18 +161,14 @@ public class AllyManager : MonoBehaviour
 
         if (allyAttack == null)
         {
-            Debug.LogError(
-                $"{spawnedAlly.name}: AllyAttack이 없습니다.",
-                spawnedAlly
-            );
-
             Destroy(spawnedAlly);
             return null;
         }
 
         allyAttack.Initialize(
             allyData,
-            enemyLayer
+            enemyLayer,
+            globalAttackPoints
         );
 
         currentAllyCount++;

@@ -324,59 +324,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GEN8- Land's Wrath_15
-      rect:
-        serializedVersion: 2
-        x: 647
-        y: 94
-        width: 49
-        height: 56
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 7e7ce8c1082ca4c20800000000000000
-      internalID: 3191577141436139495
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: GEN8- Land's Wrath_16
-      rect:
-        serializedVersion: 2
-        x: 647
-        y: 99
-        width: 6
-        height: 6
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f8cb995f2f86db890800000000000000
-      internalID: -7440675616634323825
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: GEN8- Land's Wrath_17
       rect:
         serializedVersion: 2
-        x: 691
-        y: 105
-        width: 6
-        height: 6
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 647
+        y: 91
+        width: 50
+        height: 56
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5303636}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -394,7 +350,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 839
-        y: 95
+        y: 96
         width: 45
         height: 55
       alignment: 0

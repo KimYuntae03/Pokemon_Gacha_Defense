@@ -6,14 +6,14 @@ AnimatorOverrideController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: DRAGONITE_Override
+  m_Name: Mew_Override
   m_Controller: {fileID: 9100000, guid: 6874b6ff836944f4caf4a41d5b038980, type: 2}
   m_Clips:
   - m_OriginalClip: {fileID: 7400000, guid: c43312beb55813d43b0db7df225d2bb8, type: 2}
-    m_OverrideClip: {fileID: 7400000, guid: 9d1da626b43a4d8448922b3531ba4280, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 3eb239ee3955eec48b23bc95ed5a5e21, type: 2}
   - m_OriginalClip: {fileID: 7400000, guid: 4c52ecd7fccde1647b6545733bf13680, type: 2}
-    m_OverrideClip: {fileID: 7400000, guid: 84de381b992457040bc90f0485df5195, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 5fa1770f15bd93d4394a89798ff4859b, type: 2}
   - m_OriginalClip: {fileID: 7400000, guid: 3183be0130cea9d46ba11e2cff512140, type: 2}
-    m_OverrideClip: {fileID: 7400000, guid: 335c2c1d91f72c94f98a1af2148c2276, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 6c7af60b06668d141803d15e56fef74f, type: 2}
   - m_OriginalClip: {fileID: 7400000, guid: 6287b52d5aa726340bdbf716a255ffce, type: 2}
-    m_OverrideClip: {fileID: 7400000, guid: 9c41c6f69d91e034eae5834f6ce103db, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 27efeb411416ddf4e8efa5fa708763e3, type: 2}

@@ -10,9 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 801228131e1278b438ffab36100027cc, type: 3}
-  m_Name: DRAGONITE
+  m_Name: Mew
   m_EditorClassIdentifier: Assembly-CSharp::AllyData
-  allyName: DRAGONITE
+  allyName: Mew
   grade: 4
   allyPrefab: {fileID: 2624290616382295073, guid: a1c4d31b554a0374bb56685cfb261d39, type: 3}
-  animatorOverrideController: {fileID: 22100000, guid: 387ad8aaa1dc2a844b94edb33a034638, type: 2}
+  animatorOverrideController: {fileID: 22100000, guid: 34c16556745f54644a9aceb28cbad287, type: 2}
+  attackDamage: 10
+  attackInterval: 1
+  attackRange: 4
+  attackPrefab: {fileID: 6785212003771102999, guid: 52d4bb6ba634c8f4d9e9744288c72fde, type: 3}
+  attackType: 0

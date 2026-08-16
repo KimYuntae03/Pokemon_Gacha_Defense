@@ -37,6 +37,9 @@ public class AllyData : ScriptableObject
 
     public float attackRange = 4f; //사거리
     
-    [Header("투사체")]
-    public GameObject projectilePrefab;
+    [Header("공격 프리팹")]
+    public GameObject attackPrefab;
+
+    [Header("공격 방식")]
+    public AllyAttackType attackType;   
 }

@@ -19,4 +19,5 @@ MonoBehaviour:
   attackDamage: 50
   attackInterval: 1
   attackRange: 4
-  projectilePrefab: {fileID: 6785212003771102999, guid: 7d81a59c66698b142a246933e10dfa72, type: 3}
+  attackPrefab: {fileID: 6785212003771102999, guid: 7d81a59c66698b142a246933e10dfa72, type: 3}
+  attackType: 0
