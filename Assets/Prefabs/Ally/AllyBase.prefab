@@ -164,8 +164,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
+  m_Offset: {x: 0, y: -0.2}
+  m_Radius: 0.6
 --- !u!114 &-3980652163851943711
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -193,4 +193,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 660fede2e5081644c908bffac29c2186, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AllyAttack
-  globalAttackPoints: []

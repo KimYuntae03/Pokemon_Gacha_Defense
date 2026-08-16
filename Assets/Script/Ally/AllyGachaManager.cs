@@ -7,6 +7,9 @@ public class AllyGachaManager : MonoBehaviour
     [SerializeField]
     private AllyData[] allyDataList;
 
+    [Header("가챠 로그 UI")]
+    [SerializeField]
+    private GachaLogUI gachaLogUI;
 
     public AllyData DrawAlly()
     {
@@ -31,10 +34,6 @@ public class AllyGachaManager : MonoBehaviour
 
         if (candidates.Count == 0)
         {
-            Debug.LogWarning(
-                $"{selectedGrade} 등급에 등록된 아군이 없습니다."
-            );
-
             return null;
         }
 
@@ -49,11 +48,14 @@ public class AllyGachaManager : MonoBehaviour
         AllyData selectedAlly =
             candidates[randomIndex];
 
-
-        Debug.Log(
-            $"뽑기 결과: [{selectedGrade}] {selectedAlly.allyName}"
-        );
-
+        if (gachaLogUI != null)
+        {
+            gachaLogUI.AddLog(
+                selectedAlly.allyName,
+                selectedGrade,
+                GetGradeProbability(selectedGrade)
+            );
+        }
 
         return selectedAlly;
     }
@@ -106,5 +108,41 @@ public class AllyGachaManager : MonoBehaviour
         }
 
         return AllyGrade.Primordial;
+    }
+
+    private float GetGradeProbability(AllyGrade grade)
+    {
+        switch (grade)
+        {
+            case AllyGrade.Common:
+                return 50f;
+
+            case AllyGrade.Rare:
+                return 30f;
+
+            case AllyGrade.Ancient:
+                return 10f;
+
+            case AllyGrade.Relic:
+                return 7f;
+
+            case AllyGrade.EpicStory:
+                return 2f;
+
+            case AllyGrade.Legendary:
+                return 0.55f;
+
+            case AllyGrade.Epic:
+                return 0.25f;
+
+            case AllyGrade.Mythic:
+                return 0.15f;
+
+            case AllyGrade.Primordial:
+                return 0.05f;
+
+            default:
+                return 0f;
+        }
     }
 }

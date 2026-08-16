@@ -107,20 +107,62 @@ public class AllyDrag : MonoBehaviour,
     {
         if (allyFloorTilemap == null)
         {
-            Debug.LogError(
-                $"{gameObject.name}: AllyFloor Tilemap이 등록되지 않았습니다.",
-                this
-            );
-
             return false;
         }
 
-        Vector3Int cellPosition =
-            allyFloorTilemap.WorldToCell(
-                transform.position
-            );
+        if (allyCollider == null)
+        {
+            return false;
+        }
 
-        return allyFloorTilemap.HasTile(cellPosition);
+        Bounds bounds =
+            allyCollider.bounds;
+
+        Vector3[] checkPoints =
+        {
+            bounds.center,
+
+            new Vector3(
+                bounds.min.x,
+                bounds.min.y,
+                transform.position.z
+            ),
+
+            new Vector3(
+                bounds.min.x,
+                bounds.max.y,
+                transform.position.z
+            ),
+
+            new Vector3(
+                bounds.max.x,
+                bounds.min.y,
+                transform.position.z
+            ),
+
+            new Vector3(
+                bounds.max.x,
+                bounds.max.y,
+                transform.position.z
+            )
+        };
+
+
+        foreach (Vector3 point in checkPoints)
+        {
+            Vector3Int cellPosition =
+                allyFloorTilemap.WorldToCell(
+                    point
+                );
+
+            if (!allyFloorTilemap.HasTile(cellPosition))
+            {
+                return false;
+            }
+        }
+
+
+        return true;
     }
 
 
