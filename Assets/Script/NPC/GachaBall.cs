@@ -12,36 +12,49 @@ public class GachaBall : MonoBehaviour,
     [SerializeField]
     private AllyManager allyManager;
 
+    [Header("가챠 비용")]
+    [SerializeField]
+    private int gachaCost = 10;
+
+    [SerializeField]
+    private GoldOrbManager goldOrbManager;
 
     public void OnPointerClick(PointerEventData eventData)
     {
         // 최대 아군 수에 도달했으면 뽑기 금지
         if (!allyManager.CanSpawnAlly())
         {
-            Debug.LogWarning(
-                "아군 최대 수에 도달해서 더 이상 뽑을 수 없습니다."
-            );
-
             return;
         }
-
+        if (goldOrbManager == null)
+        {
+            return;
+        }
+        if (!goldOrbManager.CanSpend(gachaCost))
+        {
+            return;
+        }
 
         // 정해둔 확률에 따라 아군 가챠
         AllyData selectedAlly =
             allyGachaManager.DrawAlly();
 
-
-        // 해당 등급의 후보가 없는 등의 이유로
-        // 뽑기에 실패했다면 생성하지 않는다.
         if (selectedAlly == null)
         {
             return;
         }
+        GameObject spawnedAlly =
+            allyManager.SpawnAlly(
+                selectedAlly
+            );
 
-
-        // 뽑힌 AllyData를 AllyManager에게 넘겨서 실제 생성
-        allyManager.SpawnAlly(
-            selectedAlly
+        if (spawnedAlly == null)
+        {
+            return;
+        }
+        // 모든 과정이 성공했을 때 금구슬 10개 차감
+        goldOrbManager.SpendGoldOrb(
+            gachaCost
         );
     }
 }

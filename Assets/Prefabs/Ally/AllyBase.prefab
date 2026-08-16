@@ -205,7 +205,7 @@ GameObject:
   - component: {fileID: 2586145647411019598}
   - component: {fileID: 7053716911543330140}
   - component: {fileID: 6733581472100107736}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: ClikArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}

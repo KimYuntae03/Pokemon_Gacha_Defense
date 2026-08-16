@@ -97,10 +97,6 @@ public class AllyDrag : MonoBehaviour,
         }
         
         UpdateDirection();
-
-        Debug.Log(
-            $"{gameObject.name} 배치 완료: {transform.position}"
-        );
     }
 
     private bool IsInsideAllyFloor()
@@ -185,18 +181,13 @@ public class AllyDrag : MonoBehaviour,
 
         foreach (Collider2D hit in hits)
         {
-            /*
-             * 자기 자신의 Collider는 무시한다.
-             */
-            if (hit == allyCollider)
+            if (hit.transform == transform || hit.transform.IsChildOf(transform))
             {
                 continue;
             }
 
             return true;
         }
-
-
         return false;
     }
 

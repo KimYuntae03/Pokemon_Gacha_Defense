@@ -7,6 +7,13 @@ public class EnemyHealth : MonoBehaviour
 
     [SerializeField]
     private float currentHealth;
+    private GoldOrbManager goldOrbManager;
+
+    private void Start()
+    {
+        goldOrbManager =
+            FindFirstObjectByType<GoldOrbManager>();
+    }
 
     public void SetHealth(float health)
     {
@@ -29,7 +36,12 @@ public class EnemyHealth : MonoBehaviour
     }
 
     private void Die()
-    {
+    {   
+        if (goldOrbManager != null)
+        {
+            goldOrbManager.AddGoldOrb(1);
+        }
+
         Destroy(gameObject);
     }
 }
