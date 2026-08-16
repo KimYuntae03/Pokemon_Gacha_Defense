@@ -42,4 +42,13 @@ public class AllyData : ScriptableObject
 
     [Header("공격 방식")]
     public AllyAttackType attackType;   
+
+    [Header("전역 공격")]
+    public bool useGlobalAttack = false;
+
+    public GameObject globalAttackPrefab;
+
+    public float globalAttackInterval = 3f;
+
+    public float globalAttackDamage = 10f;
 }

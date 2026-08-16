@@ -20389,8 +20389,6 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 128
-  testAllyData:
-  - {fileID: 11400000, guid: c5cf48facf44de04190e0b93beb347ff, type: 2}
   globalAttackPoints:
   - {fileID: 677607905}
   - {fileID: 656497219}
@@ -20408,6 +20406,7 @@ MonoBehaviour:
   - {fileID: 985911209}
   - {fileID: 694889057}
   - {fileID: 1943549769}
+  testArceusData: {fileID: 11400000, guid: c5cf48facf44de04190e0b93beb347ff, type: 2}
 --- !u!1 &964382538
 GameObject:
   m_ObjectHideFlags: 0

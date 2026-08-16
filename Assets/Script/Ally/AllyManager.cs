@@ -37,60 +37,32 @@ public class AllyManager : MonoBehaviour
     [SerializeField]
     private LayerMask enemyLayer;
 
-    [Header("테스트용 아군 생성")]
-    [SerializeField]
-    private AllyData[] testAllyData;
-
     [Header("전역 공격 위치")]
     [SerializeField]
     private Transform[] globalAttackPoints;
 
     private int currentAllyCount;
 
+[Header("임시 테스트")]
+[SerializeField]
+private AllyData testArceusData;
 
     public bool CanSpawnAlly()
     {
         return currentAllyCount < maxAllyCount;
     }
-
     private void Update()
+{
+    if (Keyboard.current == null)
     {
-            if (Keyboard.current == null)
-        {
-            return;
-        }
-
-        if (testAllyData.Length > 0 &&
-            Keyboard.current.digit1Key.wasPressedThisFrame)
-        {
-            SpawnAlly(testAllyData[0]);
-        }
-
-        if (testAllyData.Length > 1 &&
-            Keyboard.current.digit2Key.wasPressedThisFrame)
-        {
-            SpawnAlly(testAllyData[1]);
-        }
-
-        if (testAllyData.Length > 2 &&
-            Keyboard.current.digit3Key.wasPressedThisFrame)
-        {
-            SpawnAlly(testAllyData[2]);
-        }
-
-        if (testAllyData.Length > 3 &&
-            Keyboard.current.digit4Key.wasPressedThisFrame)
-        {
-            SpawnAlly(testAllyData[3]);
-        }
-
-        if (testAllyData.Length > 4 &&
-            Keyboard.current.digit5Key.wasPressedThisFrame)
-        {
-            SpawnAlly(testAllyData[4]);
-        }
+        return;
     }
 
+    if (Keyboard.current.digit1Key.wasPressedThisFrame)
+    {
+        SpawnAlly(testArceusData);
+    }
+}
 
     public GameObject SpawnAlly(AllyData allyData)
     {
@@ -140,11 +112,6 @@ public class AllyManager : MonoBehaviour
 
         if (allyDrag == null)
         {
-            Debug.LogError(
-                $"{spawnedAlly.name}: AllyDrag가 없습니다.",
-                spawnedAlly
-            );
-
             Destroy(spawnedAlly);
             return null;
         }
@@ -172,11 +139,6 @@ public class AllyManager : MonoBehaviour
         );
 
         currentAllyCount++;
-
-        Debug.Log(
-            $"아군 생성: {allyData.allyName} " +
-            $"({currentAllyCount}/{maxAllyCount})"
-        );
 
         return spawnedAlly;
     }
@@ -219,10 +181,6 @@ public class AllyManager : MonoBehaviour
                 }
             }
         }
-
-        Debug.LogWarning(
-            "빈 생성 위치를 찾지 못했습니다. SpawnCenter에 생성합니다."
-        );
 
         return allySpawnCenter.position;
     }

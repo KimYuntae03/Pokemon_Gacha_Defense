@@ -6,7 +6,9 @@ public class AllyAttack : MonoBehaviour
 
     private Transform currentTarget;
 
-    private float attackTimer;
+    private float attackTimer;//기본 투사체 공격
+
+    private float globalAttackTimer;//전역 공격
 
     private LayerMask enemyLayer;
 
@@ -27,6 +29,7 @@ public class AllyAttack : MonoBehaviour
         allyDrag = GetComponent<AllyDrag>();
 
         attackTimer = 0f;
+        globalAttackTimer = 0f;
     }
 
 
@@ -41,28 +44,36 @@ public class AllyAttack : MonoBehaviour
         {
             return;
         }
-        
-        // 현재 타겟이 없거나 유효하지 않으면
-        // 새로운 적을 찾는다.
+
         if (!IsCurrentTargetValid())
         {
             currentTarget = FindNearestEnemy();
         }
 
-        // 그래도 타겟이 없다면 공격하지 않는다.
-        if (currentTarget == null)
+        if (currentTarget != null)
         {
-            return;
+            attackTimer -= Time.deltaTime;
+
+            if (attackTimer <= 0f)
+            {
+                Attack();
+
+                attackTimer =
+                    allyData.attackInterval;
+            }
         }
 
-        attackTimer -= Time.deltaTime;
-
-        if (attackTimer <= 0f)
+        if (allyData.useGlobalAttack)
         {
-            Attack();
+            globalAttackTimer -= Time.deltaTime;
 
-            attackTimer =
-                allyData.attackInterval;
+            if (globalAttackTimer <= 0f)
+            {
+                AttackGlobalArea();
+
+                globalAttackTimer =
+                    allyData.globalAttackInterval;
+            }
         }
     }
 
@@ -227,7 +238,7 @@ public class AllyAttack : MonoBehaviour
 
             GameObject attackObject =
                 Instantiate(
-                    allyData.attackPrefab,
+                    allyData.globalAttackPrefab,
                     point.position,
                     Quaternion.identity
                 );
@@ -238,7 +249,7 @@ public class AllyAttack : MonoBehaviour
             if (thunderAttack != null)
             {
                 thunderAttack.Initialize(
-                    allyData.attackDamage
+                    allyData.globalAttackDamage
                 );
             }
         }
