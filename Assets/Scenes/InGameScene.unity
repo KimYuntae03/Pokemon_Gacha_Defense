@@ -21218,6 +21218,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GachaLogUI
   logText: {fileID: 856350098}
   maxLogCount: 10
+  logLifeTime: 5
 --- !u!1 &1472716426
 GameObject:
   m_ObjectHideFlags: 0
