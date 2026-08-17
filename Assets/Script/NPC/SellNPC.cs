@@ -5,20 +5,18 @@ public class SellNPC : MonoBehaviour,
     IPointerClickHandler
 {
     [SerializeField]
-    private GameObject sellPanel;
+    private SellUIController sellUIController;
 
 
-    public void OnPointerClick(
+     public void OnPointerClick(
         PointerEventData eventData
     )
     {
-        if (sellPanel == null)
+        if (sellUIController == null)
         {
             return;
         }
 
-        sellPanel.SetActive(
-            !sellPanel.activeSelf
-        );
+        sellUIController.OpenSellUI();
     }
 }
