@@ -138,6 +138,18 @@ private AllyData testArceusData;
             globalAttackPoints
         );
 
+        AllyUnit allyUnit = spawnedAlly.GetComponent<AllyUnit>();
+
+        if (allyUnit == null)
+        {
+            Destroy(spawnedAlly);
+            return null;
+        }
+
+        allyUnit.Initialize(
+            allyData
+        );
+
         currentAllyCount++;
 
         return spawnedAlly;
