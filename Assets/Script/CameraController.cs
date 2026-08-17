@@ -49,10 +49,6 @@ public class CameraController : MonoBehaviour
         if (bottomLeftLimit == null ||
             topRightLimit == null)
         {
-            Debug.LogError(
-                "CameraController: 카메라 경계 오브젝트가 등록되지 않았습니다.",
-                this
-            );
 
             enabled = false;
             return;
@@ -60,19 +56,11 @@ public class CameraController : MonoBehaviour
 
         CalculateMaxAllowedZoom();
 
-        /*
-         * Inspector에서 설정한 시작 줌이
-         * 맵보다 더 크게 설정되어 있어도 자동 제한한다.
-         */
-        startZoom =
-            Mathf.Clamp(
-                startZoom,
-                minZoom,
-                maxAllowedZoom
-            );
+        startZoom = cam.orthographicSize;
+
+        maxAllowedZoom = startZoom;
 
         cam.orthographicSize = startZoom;
-
         /*
          * 게임 시작 시 카메라를
          * 제한 영역 정중앙에 놓는다.
