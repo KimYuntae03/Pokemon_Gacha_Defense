@@ -5,11 +5,6 @@ public class GameSpeedController : MonoBehaviour
     [SerializeField]
     private float currentSpeed = 1f;
 
-    private void Start()
-    {
-        SetSpeed(1f);
-    }
-
     public void CycleSpeed()
     {
         Debug.Log("CycleSpeed 호출됨");
@@ -26,6 +21,11 @@ public class GameSpeedController : MonoBehaviour
         {
             SetSpeed(1f);
         }
+    }
+
+    public void ResetSpeed()
+    {
+        SetSpeed(1f);
     }
 
     private void SetSpeed(float speed)

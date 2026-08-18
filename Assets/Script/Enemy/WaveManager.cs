@@ -11,6 +11,13 @@ public class WaveManager : MonoBehaviour
     [SerializeField]
     private EnemySpawner enemySpawner;
 
+    [Header("게임 시작")]
+    [SerializeField]
+    private GameTimer gameTimer;
+
+    [SerializeField]
+    private float firstWaveDelay = 1f;
+
     private int currentWaveIndex = 0;
 
     private void Start()
@@ -21,7 +28,25 @@ public class WaveManager : MonoBehaviour
             return;
         }
 
-        StartCoroutine(RunWaves());
+        StartCoroutine(WaitForGameStart());
+    }
+
+    private IEnumerator WaitForGameStart()
+    {
+        // GameTimer가 실제 게임 시작 상태가 될 때까지 기다린다.
+        yield return new WaitUntil(
+            () => gameTimer != null &&
+                gameTimer.GameStarted
+        );
+
+        // 00:00에서 1초 대기 후 첫 웨이브 시작
+        yield return new WaitForSeconds(
+            firstWaveDelay
+        );
+
+        StartCoroutine(
+            RunWaves()
+        );
     }
 
     private IEnumerator RunWaves()
@@ -62,6 +87,16 @@ public class WaveManager : MonoBehaviour
         {
             Debug.LogError(
                 $"{gameObject.name}: EnemySpawner가 등록되지 않았습니다.",
+                this
+            );
+
+            return false;
+        }
+
+        if (gameTimer == null)
+        {
+            Debug.LogError(
+                $"{gameObject.name}: GameTimer가 등록되지 않았습니다.",
                 this
             );
 
