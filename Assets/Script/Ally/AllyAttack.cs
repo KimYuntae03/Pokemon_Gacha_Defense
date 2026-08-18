@@ -16,6 +16,8 @@ public class AllyAttack : MonoBehaviour
     
     private Transform[] globalAttackPoints;
 
+    private AllyUpgradeManager allyUpgradeManager;
+
     public void Initialize(
         AllyData data,
         LayerMask targetLayer,
@@ -27,6 +29,8 @@ public class AllyAttack : MonoBehaviour
         globalAttackPoints = attackPoints;
         
         allyDrag = GetComponent<AllyDrag>();
+
+        allyUpgradeManager = FindFirstObjectByType<AllyUpgradeManager>();
 
         attackTimer = 0f;
         globalAttackTimer = 0f;
@@ -133,27 +137,39 @@ public class AllyAttack : MonoBehaviour
 
 
     private void Attack()
-{
-    if (currentTarget == null)
     {
-        return;
+        if (currentTarget == null)
+        {
+            return;
+        }
+
+        switch (allyData.attackType)
+        {
+            case AllyAttackType.Projectile:
+                FireProjectile();
+                break;
+
+            case AllyAttackType.TargetArea:
+                AttackTargetArea();
+                break;
+
+            case AllyAttackType.GlobalArea:
+                AttackGlobalArea();
+                break;
+        }
     }
 
-    switch (allyData.attackType)
+    private float GetFinalDamage(float baseDamage)
     {
-        case AllyAttackType.Projectile:
-            FireProjectile();
-            break;
+        if (allyUpgradeManager == null)
+        {
+            return baseDamage;
+        }
 
-        case AllyAttackType.TargetArea:
-            AttackTargetArea();
-            break;
-
-        case AllyAttackType.GlobalArea:
-            AttackGlobalArea();
-            break;
+        return allyUpgradeManager.GetUpgradedDamage(
+            baseDamage
+        );
     }
-}
 
     private void FireProjectile()
     {
@@ -181,7 +197,7 @@ public class AllyAttack : MonoBehaviour
 
         projectile.Initialize(
             currentTarget,
-            allyData.attackDamage
+            GetFinalDamage(allyData.attackDamage)
         );
     }
 
@@ -204,7 +220,7 @@ public class AllyAttack : MonoBehaviour
         if (enemyHealth != null)
         {
             enemyHealth.TakeDamage(
-                allyData.attackDamage
+                GetFinalDamage(allyData.attackDamage)
             );
         }
 
@@ -249,7 +265,9 @@ public class AllyAttack : MonoBehaviour
             if (thunderAttack != null)
             {
                 thunderAttack.Initialize(
-                    allyData.globalAttackDamage
+                    GetFinalDamage(
+                        allyData.globalAttackDamage
+                    )
                 );
             }
         }

@@ -580,6 +580,52 @@ Transform:
   - {fileID: 2041393420}
   m_Father: {fileID: 2030125056}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &122064381
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 122064383}
+  - component: {fileID: 122064382}
+  m_Layer: 0
+  m_Name: AllyUpgradeManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &122064382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 122064381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cff2ed9752806444a3b04afb768e2e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AllyUpgradeManager
+  attackUpgradeLevel: 0
+  attackIncreasePerLevel: 0.05
+--- !u!4 &122064383
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 122064381}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.15408, y: 0.81879, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 756713471}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &149549365
 GameObject:
   m_ObjectHideFlags: 0
@@ -21083,6 +21129,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 122064383}
+  - {fileID: 787630905}
   - {fileID: 1443272866}
   - {fileID: 904171593}
   - {fileID: 1943756182}
@@ -21208,12 +21256,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 787630903}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 38.9251, y: 0.27645, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 756713471}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &796273546
 GameObject:
@@ -21227,6 +21275,7 @@ GameObject:
   - component: {fileID: 796273548}
   - component: {fileID: 796273549}
   - component: {fileID: 796273550}
+  - component: {fileID: 796273551}
   m_Layer: 0
   m_Name: UpgradeNPC
   m_TagString: Untagged
@@ -21368,6 +21417,19 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.9375, y: 1.3125}
   m_EdgeRadius: 0
+--- !u!114 &796273551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 796273546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dea3c58a192c3be4d92eade64fe20b06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AttackUpgradeNPC
+  allyUpgradeManager: {fileID: 122064382}
 --- !u!1 &850057390
 GameObject:
   m_ObjectHideFlags: 0
@@ -23717,7 +23779,7 @@ MonoBehaviour:
   bottomLeftLimit: {fileID: 1940527338}
   topRightLimit: {fileID: 340058757}
   dragSpeed: 0.025
-  zoomSpeed: 10
+  zoomSpeed: 20
   minZoom: 8
   startZoom: 1
 --- !u!114 &1153244406
@@ -24946,7 +25008,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e916d288f02ceda4a8b813356b8bb1e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GoldOrbManager
-  currentGoldOrb: 10
+  currentGoldOrb: 20
   goldOrbUI: {fileID: 651986804}
 --- !u!4 &1689494867
 Transform:
@@ -32109,4 +32171,3 @@ SceneRoots:
   - {fileID: 557106637}
   - {fileID: 964382539}
   - {fileID: 1689494867}
-  - {fileID: 787630905}
