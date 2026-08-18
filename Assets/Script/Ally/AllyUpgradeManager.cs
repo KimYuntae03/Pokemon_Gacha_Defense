@@ -9,6 +9,22 @@ public class AllyUpgradeManager : MonoBehaviour
     [SerializeField]
     private float attackIncreasePerLevel = 0.05f;
 
+    [Header("공격력 강화 비용")]
+    [SerializeField]
+    private int baseAttackUpgradeCost = 10;
+
+    [SerializeField]
+    private int attackUpgradeCostIncrease = 5;
+
+    [SerializeField]
+    private GoldOrbManager goldOrbManager;
+
+    public int GetAttackUpgradeCost()
+    {
+        return baseAttackUpgradeCost
+            + attackUpgradeLevel * attackUpgradeCostIncrease;
+    }
+
     public int AttackUpgradeLevel
     {
         get { return attackUpgradeLevel; }
@@ -31,12 +47,20 @@ public class AllyUpgradeManager : MonoBehaviour
             GetAttackMultiplier();
     }
 
-    public void UpgradeAttack()
+    public bool UpgradeAttack()
     {
+        if (goldOrbManager == null)
+        {
+            return false;
+        }
+         int cost = GetAttackUpgradeCost();
+
+            if (!goldOrbManager.SpendGoldOrb(cost))
+            {
+                return false;
+            }
         attackUpgradeLevel++;
-        Debug.Log(
-            $"공격력 강화 Lv.{attackUpgradeLevel} / " +
-            $"공격력 +{attackUpgradeLevel * attackIncreasePerLevel * 100f:0}%"
-        );
+
+        return true;
     }
 }
