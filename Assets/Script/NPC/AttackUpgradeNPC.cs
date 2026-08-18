@@ -5,20 +5,17 @@ public class AttackUpgradeNPC : MonoBehaviour,
     IPointerClickHandler
 {
     [SerializeField]
-    private GameObject attackUpgradePanel;
-
+    private AttackUpgradeUIController upgradeUIController;
 
     public void OnPointerClick(
         PointerEventData eventData
     )
     {
-        if (attackUpgradePanel == null)
+        if (upgradeUIController == null)
         {
             return;
         }
 
-        attackUpgradePanel.SetActive(
-            !attackUpgradePanel.activeSelf
-        );
+        upgradeUIController.OpenUpgradeUI();
     }
 }

@@ -44,7 +44,7 @@ public class GachaLogUI : MonoBehaviour
         for (int i = logs.Count - 1; i >= 0; i--)
         {
             if (
-                Time.time - logs[i].createdTime
+                Time.unscaledTime - logs[i].createdTime
                 >= logLifeTime
             )
             {
@@ -103,7 +103,7 @@ public class GachaLogUI : MonoBehaviour
         logs.Add(
             new GachaLogEntry(
                 newLog,
-                Time.time
+                Time.unscaledTime
             )
         );
 
@@ -274,5 +274,22 @@ public class GachaLogUI : MonoBehaviour
                 "\n",
                 messages
             );
+    }
+
+    public void AddMessage(string message)
+    {
+        logs.Add(
+            new GachaLogEntry(
+                message,
+                Time.unscaledTime
+            )
+        );
+
+        if (logs.Count > maxLogCount)
+        {
+            logs.RemoveAt(0);
+        }
+
+        RefreshUI();
     }
 }

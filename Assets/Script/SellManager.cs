@@ -12,6 +12,8 @@ public class SellManager : MonoBehaviour
     [SerializeField]
     private GoldOrbManager goldOrbManager;
 
+    [SerializeField]
+    private GachaLogUI gachaLogUI;
 
     public void SellCommon()
     {
@@ -74,6 +76,12 @@ public class SellManager : MonoBehaviour
             allyManager.RemoveAlly(
                 child.gameObject
             );
+            if (gachaLogUI != null)
+            {
+                gachaLogUI.AddMessage(
+                    $"+{reward}"
+                );
+            }
 
             Debug.Log(
                 $"{allyUnit.Data.allyName} 판매 / 금구슬 +{reward}"

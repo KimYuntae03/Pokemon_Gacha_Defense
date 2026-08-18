@@ -19,6 +19,10 @@ public class AllyUpgradeManager : MonoBehaviour
     [SerializeField]
     private GoldOrbManager goldOrbManager;
 
+    [Header("로그 UI")]
+    [SerializeField]
+    private GachaLogUI gachaLogUI;
+
     public int GetAttackUpgradeCost()
     {
         return baseAttackUpgradeCost
@@ -59,8 +63,26 @@ public class AllyUpgradeManager : MonoBehaviour
             {
                 return false;
             }
+
+        int previousLevel = attackUpgradeLevel;
+
         attackUpgradeLevel++;
+
+        if (gachaLogUI != null)
+        {
+            int bonusPercent =
+                Mathf.RoundToInt(
+                    attackUpgradeLevel *
+                    attackIncreasePerLevel *
+                    100f
+                );
+
+            gachaLogUI.AddMessage(
+                $"공격력 강화 Lv.{previousLevel} → Lv.{attackUpgradeLevel}"
+            );
+        }
 
         return true;
     }
+    
 }
