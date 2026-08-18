@@ -41,6 +41,10 @@ public class AllyManager : MonoBehaviour
     [SerializeField]
     private Transform[] globalAttackPoints;
 
+    [Header("세레비 스킬")]
+    [SerializeField]
+    private GameObject celebiSkillAuraPrefab;
+
     private int currentAllyCount;
 
 [Header("임시 테스트")]
@@ -149,6 +153,15 @@ private AllyData testArceusData;
         allyUnit.Initialize(
             allyData
         );
+        if (allyData.allyName == "CELEBI")
+        {
+            CelebiSkill celebiSkill =
+                spawnedAlly.AddComponent<CelebiSkill>();
+
+            celebiSkill.Initialize(
+                celebiSkillAuraPrefab
+            );
+        }
 
         currentAllyCount++;
 

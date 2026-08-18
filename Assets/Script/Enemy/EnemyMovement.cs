@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
@@ -33,6 +34,8 @@ public class EnemyMovement : MonoBehaviour
 
     private static readonly int MoveUpHash =
         Animator.StringToHash("Base Layer.MoveUp");
+    
+    private Coroutine slowCoroutine;
 
     private void Awake()
     {
@@ -70,6 +73,68 @@ public class EnemyMovement : MonoBehaviour
     public void SetSpeed(float speed)
     {
         moveSpeed = speed;
+    }
+
+    public void ApplySlow(
+        float slowAmount,
+        float duration,
+        CelebiSkill sourceCelebi
+    )
+    {
+        if (slowCoroutine != null)
+        {
+            StopCoroutine(
+                slowCoroutine
+            );
+        }
+
+        slowCoroutine =
+            StartCoroutine(
+                SlowRoutine(
+                    slowAmount,
+                    duration,
+                    sourceCelebi
+                )
+            );
+    }
+
+
+    private IEnumerator SlowRoutine(
+        float slowAmount,
+        float duration,
+        CelebiSkill sourceCelebi
+    )
+    {
+        float originalSpeed =
+            moveSpeed;
+
+        moveSpeed =
+            originalSpeed *
+            (1f - slowAmount);
+
+        Debug.Log(
+            $"{gameObject.name} 감속 시작 / " +
+            $"{originalSpeed} → {moveSpeed}"
+        );
+
+        yield return new WaitForSeconds(
+            duration
+        );
+
+        moveSpeed =
+            originalSpeed;
+
+        slowCoroutine = null;
+
+        Debug.Log(
+            $"{gameObject.name} 감속 종료 / " +
+            $"속도 {moveSpeed} 복구"
+        );
+
+        if (sourceCelebi != null)
+        {
+            sourceCelebi.OnSlowFinished();
+        }
     }
 
     private void MoveToCurrentPoint()
