@@ -71,11 +71,19 @@ public class AllyClickArea : MonoBehaviour,
         CelebiSkill celebiSkill =
             GetComponentInParent<CelebiSkill>();
 
-        if (celebiSkill == null)
+        if (celebiSkill != null)
         {
+            celebiSkill.SelectSkill();
+
             return;
         }
 
-        celebiSkill.SelectSkill();
+        VictiniSkill victiniSkill =
+            GetComponentInParent<VictiniSkill>();
+
+        if (victiniSkill != null)
+        {
+            victiniSkill.TryUseSkill();
+        }
     }
 }

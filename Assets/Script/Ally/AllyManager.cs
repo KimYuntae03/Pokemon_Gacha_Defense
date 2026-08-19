@@ -45,6 +45,10 @@ public class AllyManager : MonoBehaviour
     [SerializeField]
     private GameObject celebiSkillAuraPrefab;
 
+    [Header("비크티니 스킬")]
+    [SerializeField]
+    private GameObject victiniSkillAuraPrefab;
+
     private int currentAllyCount;
 
 [Header("임시 테스트")]
@@ -160,6 +164,16 @@ private AllyData testArceusData;
 
             celebiSkill.Initialize(
                 celebiSkillAuraPrefab
+            );
+        }
+
+        if (allyData.allyName == "VICTINI")
+        {
+            VictiniSkill victiniSkill =
+                spawnedAlly.AddComponent<VictiniSkill>();
+
+            victiniSkill.Initialize(
+                victiniSkillAuraPrefab
             );
         }
 

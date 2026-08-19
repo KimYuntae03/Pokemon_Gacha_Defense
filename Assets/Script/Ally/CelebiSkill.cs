@@ -5,7 +5,7 @@ public class CelebiSkill : MonoBehaviour
 {
     [Header("스킬 설정")]
     [SerializeField]
-    private float cooldown = 80f; // 테스트용. 나중에 90f
+    private float cooldown = 80f; 
 
     [SerializeField]
     private float slowDuration = 10f;
@@ -21,13 +21,9 @@ public class CelebiSkill : MonoBehaviour
 
     private GameObject currentAura;
 
-    private bool skillReady;
-    private bool isTargeting;
-
-
     // 현재 타겟을 선택하고 있는 세레비
     private static CelebiSkill targetingCelebi;
-
+    private bool skillReady;
 
     public bool SkillReady
     {
@@ -46,8 +42,6 @@ public class CelebiSkill : MonoBehaviour
 
     private void Start()
     {
-        skillReady = false;
-        isTargeting = false;
 
         StartCoroutine(
             CooldownRoutine()
@@ -66,47 +60,16 @@ public class CelebiSkill : MonoBehaviour
 
 
     private void SetSkillReady()
-    {
+    {   
         skillReady = true;
-
+        
         ShowAura();
-
-        Debug.Log(
-            $"{gameObject.name} 스킬 준비 완료"
-        );
     }
 
 
     public void SelectSkill()
     {
-        if (!skillReady)
-        {
-            return;
-        }
-
-
-        // 이미 이 세레비가 선택된 상태라면 선택 취소
-        if (targetingCelebi == this)
-        {
-            CancelTargeting();
-            return;
-        }
-
-
-        // 다른 세레비가 선택되어 있었다면 취소
-        if (targetingCelebi != null)
-        {
-            targetingCelebi.isTargeting = false;
-        }
-
-
         targetingCelebi = this;
-        isTargeting = true;
-
-
-        Debug.Log(
-            $"{gameObject.name} 스킬 타겟 선택 대기"
-        );
     }
 
 
@@ -141,9 +104,7 @@ public class CelebiSkill : MonoBehaviour
             return;
         }
 
-
         skillReady = false;
-        isTargeting = false;
 
         targetingCelebi = null;
 
@@ -155,13 +116,6 @@ public class CelebiSkill : MonoBehaviour
             slowDuration,
             this
         );
-
-
-        Debug.Log(
-            $"{gameObject.name} 스킬 사용 / " +
-            $"감속 {slowAmount * 100f}% / " +
-            $"{slowDuration}초"
-        );
     }
 
 
@@ -170,25 +124,15 @@ public class CelebiSkill : MonoBehaviour
         StartCoroutine(
             CooldownRoutine()
         );
-
-        Debug.Log(
-            $"{gameObject.name} 스킬 재충전 시작"
-        );
     }
 
 
     private void CancelTargeting()
     {
-        isTargeting = false;
-
         if (targetingCelebi == this)
         {
             targetingCelebi = null;
         }
-
-        Debug.Log(
-            $"{gameObject.name} 스킬 선택 취소"
-        );
     }
 
 

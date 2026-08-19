@@ -23,6 +23,8 @@ public class AllyUpgradeManager : MonoBehaviour
     [SerializeField]
     private GachaLogUI gachaLogUI;
 
+    private float temporaryAttackMultiplier = 1f;
+
     public int GetAttackUpgradeCost()
     {
         return baseAttackUpgradeCost
@@ -47,8 +49,9 @@ public class AllyUpgradeManager : MonoBehaviour
         float baseDamage
     )
     {
-        return baseDamage *
-            GetAttackMultiplier();
+         return baseDamage
+            * GetAttackMultiplier()
+            * temporaryAttackMultiplier;
     }
 
     public bool UpgradeAttack()
@@ -83,6 +86,20 @@ public class AllyUpgradeManager : MonoBehaviour
         }
 
         return true;
+    }
+
+    public void ApplyTemporaryAttackBuff(
+        float buffAmount
+    )
+    {
+        temporaryAttackMultiplier =
+            1f + buffAmount;
+    }
+
+
+    public void RemoveTemporaryAttackBuff()
+    {
+        temporaryAttackMultiplier = 1f;
     }
     
 }

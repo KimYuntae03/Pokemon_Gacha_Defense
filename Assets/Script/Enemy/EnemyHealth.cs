@@ -24,7 +24,11 @@ public class EnemyHealth : MonoBehaviour
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
-
+        Debug.Log(
+            $"{gameObject.name} 피격 / " +
+            $"받은 데미지: {damage} / " +
+            $"남은 체력: {currentHealth}"
+        );
         if (currentHealth <= 0f)
         {
             Die();
