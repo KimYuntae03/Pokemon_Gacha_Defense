@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 411bba64fbaf01b4ea1f5e288724dafa, type: 3}
   m_Name: Enemy51
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
-  enemyName: Enemy 51
+  enemyName: ETERNATUS
   maxHealth: 100
   moveSpeed: 2
   animatorOverrideController: {fileID: 22100000, guid: e40fe1ada596ad74ab5009209a1951d9, type: 2}

@@ -9,15 +9,19 @@ public class EnemyHealth : MonoBehaviour
     private float currentHealth;
     private GoldOrbManager goldOrbManager;
 
+    private EnemyData enemyData;
+    
     private void Start()
     {
         goldOrbManager =
             FindFirstObjectByType<GoldOrbManager>();
     }
 
-    public void SetHealth(float health)
+    public void Initialize(EnemyData data)
     {
-        maxHealth = health;
+        enemyData = data;
+
+        maxHealth = data.maxHealth;
         currentHealth = maxHealth;
     }
 
@@ -36,7 +40,20 @@ public class EnemyHealth : MonoBehaviour
     }
 
     private void Die()
-    {   
+    {      
+        if (GameResultManager.Instance != null)
+        {
+            GameResultManager.Instance.EnemyDied();
+        }
+
+        if (enemyData != null && enemyData.enemyName == "ETERNATUS")
+        {
+            if (GameResultManager.Instance != null)
+            {
+                GameResultManager.Instance.GameClear();
+            }
+        }
+
         if (goldOrbManager != null)
         {
             goldOrbManager.AddGoldOrb(1);

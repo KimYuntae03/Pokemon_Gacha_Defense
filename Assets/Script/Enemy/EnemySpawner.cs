@@ -24,21 +24,11 @@ public class EnemySpawner : MonoBehaviour
 
         if (waveData == null)
         {
-            Debug.LogError(
-                $"{gameObject.name}: WaveData가 없습니다.",
-                this
-            );
-
             yield break;
         }
 
         if (waveData.enemyData == null)
         {
-            Debug.LogError(
-                $"{gameObject.name}: WaveData에 EnemyData가 없습니다.",
-                this
-            );
-
             yield break;
         }
 
@@ -69,41 +59,25 @@ public class EnemySpawner : MonoBehaviour
             enemiesParent
         );
 
-        // -------------------------
         // 이동 경로 전달
-        // -------------------------
 
         EnemyMovement enemyMovement =
             spawnedEnemy.GetComponent<EnemyMovement>();
 
         if (enemyMovement == null)
         {
-            Debug.LogError(
-                $"{spawnedEnemy.name}: EnemyMovement가 없습니다.",
-                spawnedEnemy
-            );
-
             Destroy(spawnedEnemy);
             return;
         }
 
         enemyMovement.SetPath(pathPoints);
 
-
-        // -------------------------
         // 애니메이션 교체
-        // -------------------------
-
         EnemyAnimator enemyAnimator =
             spawnedEnemy.GetComponent<EnemyAnimator>();
 
         if (enemyAnimator == null)
         {
-            Debug.LogError(
-                $"{spawnedEnemy.name}: EnemyAnimator가 없습니다.",
-                spawnedEnemy
-            );
-
             Destroy(spawnedEnemy);
             return;
         }
@@ -121,18 +95,18 @@ public class EnemySpawner : MonoBehaviour
 
         if (enemyHealth == null)
         {
-            Debug.LogError(
-                $"{spawnedEnemy.name}: EnemyHealth가 없습니다.",
-                spawnedEnemy
-            );
-
             Destroy(spawnedEnemy);
             return;
         }
 
-        enemyHealth.SetHealth(
-            enemyData.maxHealth
+        enemyHealth.Initialize(
+            enemyData
         );
+
+        if (GameResultManager.Instance != null)
+        {
+            GameResultManager.Instance.EnemySpawned();
+        }
     }
 
 
@@ -140,31 +114,16 @@ public class EnemySpawner : MonoBehaviour
     {
         if (enemyPrefab == null)
         {
-            Debug.LogError(
-                $"{gameObject.name}: Enemy Prefab이 등록되지 않았습니다.",
-                this
-            );
-
             return false;
         }
 
         if (pathPoints == null || pathPoints.Length < 2)
         {
-            Debug.LogError(
-                $"{gameObject.name}: Path Points를 2개 이상 등록해야 합니다.",
-                this
-            );
-
             return false;
         }
 
         if (pathPoints[0] == null)
         {
-            Debug.LogError(
-                $"{gameObject.name}: Point_00이 등록되지 않았습니다.",
-                this
-            );
-
             return false;
         }
 

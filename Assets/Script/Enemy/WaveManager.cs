@@ -20,6 +20,32 @@ public class WaveManager : MonoBehaviour
 
     private int currentWaveIndex = 0;
 
+    public int CurrentWave
+    {
+        get
+        {
+            if (waves == null || waves.Length == 0)
+            {
+                return 0;
+            }
+
+            if (currentWaveIndex >= waves.Length)
+            {
+                return waves[waves.Length - 1].waveNumber;
+            }
+
+            return waves[currentWaveIndex].waveNumber;
+        }
+    }
+
+    public bool AllWavesStarted
+    {
+        get
+        {
+            return currentWaveIndex >= waves.Length;
+        }
+    }
+
     private void Start()
     {
         if (!ValidateSettings())
@@ -77,39 +103,26 @@ public class WaveManager : MonoBehaviour
              */
             currentWaveIndex++;
         }
-
-        Debug.Log("모든 웨이브 종료");
+        if (GameResultManager.Instance != null)
+        {
+            GameResultManager.Instance.CheckClearCondition();
+        }
     }
 
     private bool ValidateSettings()
     {
         if (enemySpawner == null)
         {
-            Debug.LogError(
-                $"{gameObject.name}: EnemySpawner가 등록되지 않았습니다.",
-                this
-            );
-
             return false;
         }
 
         if (gameTimer == null)
         {
-            Debug.LogError(
-                $"{gameObject.name}: GameTimer가 등록되지 않았습니다.",
-                this
-            );
-
             return false;
         }
 
         if (waves == null || waves.Length == 0)
         {
-            Debug.LogError(
-                $"{gameObject.name}: WaveData가 등록되지 않았습니다.",
-                this
-            );
-
             return false;
         }
 
@@ -117,11 +130,6 @@ public class WaveManager : MonoBehaviour
         {
             if (waves[i] == null)
             {
-                Debug.LogError(
-                    $"{gameObject.name}: Waves의 {i}번째 데이터가 비어 있습니다.",
-                    this
-                );
-
                 return false;
             }
         }
