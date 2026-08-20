@@ -39,15 +39,23 @@ public class EnemySpawner : MonoBehaviour
 
         for (int i = 0; i < spawnCount; i++)
         {
-            SpawnEnemy(waveData.enemyData);
+            SpawnEnemy(
+                waveData.enemyData,
+                waveData.isBossWave
+            );
 
             if (i < spawnCount - 1)
             {
                 yield return new WaitForSeconds(spawnInterval);
             }
         }
+        if (waveData.isBossWave &&
+            GameResultManager.Instance != null)
+        {
+            GameResultManager.Instance.BossSpawnFinished();
+        }
     }
-    private void SpawnEnemy(EnemyData enemyData)
+    private void SpawnEnemy(EnemyData enemyData,bool isBossEnemy)
     {
         // Point_00 위치에 적 생성
         Vector3 spawnPosition = pathPoints[0].position;
@@ -100,12 +108,18 @@ public class EnemySpawner : MonoBehaviour
         }
 
         enemyHealth.Initialize(
-            enemyData
+            enemyData,
+            isBossEnemy
         );
 
         if (GameResultManager.Instance != null)
         {
             GameResultManager.Instance.EnemySpawned();
+        }
+        if (isBossEnemy &&
+            GameResultManager.Instance != null)
+        {
+            GameResultManager.Instance.BossEnemySpawned();
         }
     }
 

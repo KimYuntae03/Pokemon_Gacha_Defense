@@ -10,6 +10,7 @@ public class EnemyHealth : MonoBehaviour
     private GoldOrbManager goldOrbManager;
 
     private EnemyData enemyData;
+    private bool isBossEnemy;
     
     private void Start()
     {
@@ -17,9 +18,10 @@ public class EnemyHealth : MonoBehaviour
             FindFirstObjectByType<GoldOrbManager>();
     }
 
-    public void Initialize(EnemyData data)
+    public void Initialize(EnemyData data,bool bossEnemy)
     {
         enemyData = data;
+        isBossEnemy = bossEnemy;
 
         maxHealth = data.maxHealth;
         currentHealth = maxHealth;
@@ -44,6 +46,12 @@ public class EnemyHealth : MonoBehaviour
         if (GameResultManager.Instance != null)
         {
             GameResultManager.Instance.EnemyDied();
+        }
+
+        if (isBossEnemy &&
+            GameResultManager.Instance != null)
+        {
+            GameResultManager.Instance.BossEnemyDied();
         }
 
         if (enemyData != null && enemyData.enemyName == "ETERNATUS")

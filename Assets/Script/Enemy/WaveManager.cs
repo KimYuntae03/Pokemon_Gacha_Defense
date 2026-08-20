@@ -85,7 +85,14 @@ public class WaveManager : MonoBehaviour
         {
             WaveData currentWave = waves[currentWaveIndex];
 
+            if (currentWave.isBossWave &&
+                GameResultManager.Instance != null)
+            {
+                GameResultManager.Instance.ResetBossEnemyCount();
+            }
+
             Debug.Log($"Wave {currentWave.waveNumber} 시작");
+
 
             if (waveUI != null)
             {
@@ -98,9 +105,20 @@ public class WaveManager : MonoBehaviour
                 enemySpawner.SpawnWave(currentWave)
             );
 
-            yield return new WaitForSeconds(
-                currentWave.waveDuration
+            yield return StartCoroutine(
+                gameTimer.RunWaveTimer(
+                    currentWave.waveDuration
+                )
             );
+            
+            if (currentWave.isBossWave &&
+                GameResultManager.Instance != null &&
+                GameResultManager.Instance.CurrentBossEnemyCount > 0)
+            {
+                GameResultManager.Instance.TriggerGameOver();
+
+                yield break;
+            }
 
             currentWaveIndex++;
         }
@@ -136,5 +154,13 @@ public class WaveManager : MonoBehaviour
         }
 
         return true;
+    }
+
+    public void BossWaveCleared()
+    {
+        if (gameTimer != null)
+        {
+            gameTimer.StopWaveTimer();
+        }
     }
 }

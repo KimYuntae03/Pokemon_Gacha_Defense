@@ -19,4 +19,7 @@ public class WaveData : ScriptableObject
 
     [Header("웨이브 진행 시간")]
     public float waveDuration = 30f;
+
+    [Header("보스 웨이브")]
+    public bool isBossWave = false;
 }

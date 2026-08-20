@@ -43,13 +43,25 @@ public class GameResultManager : MonoBehaviour
 
     private int currentEnemyCount;
 
+    private int currentBossEnemyCount;
+
     private bool warningShown;
     private bool gameEnded;
-
+    private bool bossSpawnCompleted;
 
     public bool GameEnded
     {
         get { return gameEnded; }
+    }
+
+    public int CurrentBossEnemyCount
+    {
+        get { return currentBossEnemyCount; }
+    }
+
+    public bool BossSpawnCompleted
+    {
+        get { return bossSpawnCompleted; }
     }
 
 
@@ -247,6 +259,76 @@ private void Update() //UI테스트용 코드
             currentEnemyCount == 0)
         {
             GameClear();
+        }
+    }
+
+    public void BossEnemySpawned()
+    {
+        if (gameEnded)
+        {
+            return;
+        }
+
+        currentBossEnemyCount++;
+    }
+
+    public void BossEnemyDied()
+    {
+        if (gameEnded)
+        {
+            return;
+        }
+
+        currentBossEnemyCount--;
+
+        if (currentBossEnemyCount < 0)
+        {
+            currentBossEnemyCount = 0;
+        }
+
+        if (currentBossEnemyCount == 0 &&
+            waveManager != null)
+        {
+            waveManager.BossWaveCleared();
+        }
+    }
+
+    public void ResetBossEnemyCount()
+    {
+        currentBossEnemyCount = 0;
+        bossSpawnCompleted = false;
+    }
+    public void TriggerGameOver()
+    {
+        GameOver();
+    }
+
+    public void BossSpawnFinished()
+    {
+        if (gameEnded)
+        {
+            return;
+        }
+
+        bossSpawnCompleted = true;
+
+        CheckBossWaveClear();
+    }
+    private void CheckBossWaveClear()
+    {
+        if (!bossSpawnCompleted)
+        {
+            return;
+        }
+
+        if (currentBossEnemyCount > 0)
+        {
+            return;
+        }
+
+        if (waveManager != null)
+        {
+            waveManager.BossWaveCleared();
         }
     }
 }

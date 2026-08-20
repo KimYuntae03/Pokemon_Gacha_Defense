@@ -16,10 +16,9 @@ public class GameTimer : MonoBehaviour
     [SerializeField]
     private GameSpeedController gameSpeedController;
 
-    private float elapsedTime;
-
+    private float remainingTime;
     private bool gameStarted;
-
+    private bool waveTimerStopRequested;
 
     public bool GameStarted
     {
@@ -38,26 +37,10 @@ public class GameTimer : MonoBehaviour
 
     private void Start()
     {
-        elapsedTime = 0f;
-
         StartCoroutine(
             StartCountdown()
         );
     }
-
-
-    private void Update()
-    {
-        if (!gameStarted)
-        {
-            return;
-        }
-
-        elapsedTime += Time.deltaTime;
-
-        UpdateTimeText();
-    }
-
 
     private IEnumerator StartCountdown()
     {
@@ -83,8 +66,6 @@ public class GameTimer : MonoBehaviour
     {
         gameStarted = true;
 
-        elapsedTime = 0f;
-
         if (gameSpeedController != null)
         {
             gameSpeedController.ResetSpeed();
@@ -93,9 +74,33 @@ public class GameTimer : MonoBehaviour
         {
             Time.timeScale = 1f;
         }
+    }
+
+    public IEnumerator RunWaveTimer(float duration)
+    {
+        waveTimerStopRequested = false;
+        remainingTime = duration;
 
         UpdateTimeText();
 
+        while (remainingTime > 0f && !waveTimerStopRequested)
+        {
+            remainingTime -= Time.deltaTime;
+
+            if (remainingTime < 0f)
+            {
+                remainingTime = 0f;
+            }
+
+            UpdateTimeText();
+
+            yield return null;
+        }
+    }
+
+    public void StopWaveTimer()
+    {
+        waveTimerStopRequested = true;
     }
 
 
@@ -103,7 +108,7 @@ public class GameTimer : MonoBehaviour
     {
         int totalSeconds =
             Mathf.FloorToInt(
-                elapsedTime
+                remainingTime
             );
 
         int minutes =
