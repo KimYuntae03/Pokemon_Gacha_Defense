@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainMenuUI : MonoBehaviour
 {
@@ -28,5 +29,23 @@ public class MainMenuUI : MonoBehaviour
         {
             guideOverlay.SetActive(false);
         }
+    }
+
+    public void ExitGame()
+    {
+        Debug.Log("게임 종료");
+
+    #if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+    #else
+        Application.Quit();
+    #endif
+    }
+
+    public void StartGame()
+    {
+        Time.timeScale = 1f;
+
+        SceneManager.LoadScene("InGameScene");
     }
 }
