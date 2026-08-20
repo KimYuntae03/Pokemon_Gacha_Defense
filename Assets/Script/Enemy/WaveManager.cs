@@ -15,6 +15,10 @@ public class WaveManager : MonoBehaviour
     [SerializeField]
     private GameTimer gameTimer;
 
+    [Header("웨이브 UI")]
+    [SerializeField]
+    private WaveUI waveUI;
+
     [SerializeField]
     private float firstWaveDelay = 1f;
 
@@ -83,24 +87,21 @@ public class WaveManager : MonoBehaviour
 
             Debug.Log($"Wave {currentWave.waveNumber} 시작");
 
-            /*
-             * EnemySpawner에게 현재 웨이브 데이터를 전달하고
-             * 해당 웨이브의 적들을 생성한다.
-             */
+            if (waveUI != null)
+            {
+                waveUI.UpdateWave(
+                    currentWave.waveNumber
+                );
+            }
+
             StartCoroutine(
                 enemySpawner.SpawnWave(currentWave)
             );
 
-            /*
-             * 이 웨이브가 진행되는 시간만큼 기다린다.
-             */
             yield return new WaitForSeconds(
                 currentWave.waveDuration
             );
 
-            /*
-             * 다음 웨이브로 이동
-             */
             currentWaveIndex++;
         }
         if (GameResultManager.Instance != null)

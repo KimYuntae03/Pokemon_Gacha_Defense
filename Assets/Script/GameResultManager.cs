@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
-using UnityEngine.InputSystem;
+using UnityEngine.InputSystem; //나중 삭제
+using UnityEngine.SceneManagement;
 
 public class GameResultManager : MonoBehaviour
 {
@@ -193,6 +194,21 @@ private void Update() //UI테스트용 코드
             gameResultOverlay.SetActive(true);
         }
         Time.timeScale = 0f;
+    }
+
+    public void RestartGame()
+    {
+        /*
+        * 게임 종료 시 0으로 만든 시간을 다시 정상 속도로 복구한다.
+        */
+        Time.timeScale = 1f;
+
+        /*
+        * 현재 실행 중인 Scene을 처음부터 다시 불러온다.
+        */
+        SceneManager.LoadScene(
+            SceneManager.GetActiveScene().buildIndex
+        );
     }
 
     public void CheckClearCondition()
