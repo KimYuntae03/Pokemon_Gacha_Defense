@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.InputSystem; //나중 삭제
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class GameResultManager : MonoBehaviour
 {
@@ -26,6 +27,13 @@ public class GameResultManager : MonoBehaviour
     [Header("결과 UI")]
     [SerializeField]
     private GameObject gameResultOverlay;
+
+    [Header("경고 UI")]
+    [SerializeField]
+    private GameObject enemyWarningUI;
+
+    [SerializeField]
+    private float warningDuration = 2.5f;
 
     [SerializeField]
     private TMP_Text resultText;
@@ -135,7 +143,24 @@ private void Update() //UI테스트용 코드
             $"경고! 현재 적 {currentEnemyCount}마리"
         );
 
-        // 다음 단계에서 경고 UI 연결
+        if (enemyWarningUI != null)
+        {
+            StartCoroutine(
+                ShowEnemyWarningRoutine()
+            );
+        }
+
+    }
+
+    private IEnumerator ShowEnemyWarningRoutine()
+    {
+        enemyWarningUI.SetActive(true);
+
+        yield return new WaitForSeconds(
+            warningDuration
+        );
+
+        enemyWarningUI.SetActive(false);
     }
 
 
