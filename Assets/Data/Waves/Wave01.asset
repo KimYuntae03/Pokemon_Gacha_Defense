@@ -17,4 +17,4 @@ MonoBehaviour:
   spawnCount: 20
   spawnInterval: 1.5
   waveDuration: 40
-  isBossWave: 1
+  isBossWave: 0

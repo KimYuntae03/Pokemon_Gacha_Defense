@@ -16,9 +16,9 @@ MonoBehaviour:
   grade: 8
   allyPrefab: {fileID: 2624290616382295073, guid: a1c4d31b554a0374bb56685cfb261d39, type: 3}
   animatorOverrideController: {fileID: 22100000, guid: 4e429d75234f8a448a926f364c6e39c2, type: 2}
-  attackDamage: 100
-  attackInterval: 1
-  attackRange: 10
+  attackDamage: 900
+  attackInterval: 0.4
+  attackRange: 15
   attackPrefab: {fileID: 6785212003771102999, guid: 1a9d862887643134eb4dc260d8b76130, type: 3}
   attackType: 0
   useGlobalAttack: 1
