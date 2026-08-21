@@ -19,6 +19,10 @@ public class WaveManager : MonoBehaviour
     [SerializeField]
     private WaveUI waveUI;
 
+    [Header("보스 보상")]
+    [SerializeField]
+    private BossRewardManager bossRewardManager;
+
     [SerializeField]
     private float firstWaveDelay = 1f;
 
@@ -118,6 +122,13 @@ public class WaveManager : MonoBehaviour
                 GameResultManager.Instance.TriggerGameOver();
 
                 yield break;
+            }
+            if (currentWave.isBossWave &&
+                bossRewardManager != null)
+            {
+                bossRewardManager.GiveBossReward(
+                    currentWave.waveNumber
+                );
             }
 
             currentWaveIndex++;

@@ -145,4 +145,36 @@ public class AllyGachaManager : MonoBehaviour
                 return 0f;
         }
     }
+
+    public AllyData DrawAllyByGrade(AllyGrade grade)
+    {
+        List<AllyData> candidates =
+            new List<AllyData>();
+
+        foreach (AllyData allyData in allyDataList)
+        {
+            if (allyData == null)
+            {
+                continue;
+            }
+
+            if (allyData.grade == grade)
+            {
+                candidates.Add(allyData);
+            }
+        }
+
+        if (candidates.Count == 0)
+        {
+            return null;
+        }
+
+        int randomIndex =
+            Random.Range(
+                0,
+                candidates.Count
+            );
+
+        return candidates[randomIndex];
+    }
 }
