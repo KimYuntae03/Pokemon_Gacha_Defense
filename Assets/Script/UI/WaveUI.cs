@@ -13,6 +13,6 @@ public class WaveUI : MonoBehaviour
             return;
         }
 
-        waveText.text = $"WAVE {waveNumber}";
+        waveText.text = $"WAVE {waveNumber} :";
     }
 }
