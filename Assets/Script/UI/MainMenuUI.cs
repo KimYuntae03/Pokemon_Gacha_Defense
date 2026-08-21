@@ -7,11 +7,19 @@ public class MainMenuUI : MonoBehaviour
     [SerializeField]
     private GameObject guideOverlay;
 
+    [Header("순위 UI")]
+    [SerializeField]
+    private GameObject rankingOverlay;
+
     private void Start()
     {
         if (guideOverlay != null)
         {
             guideOverlay.SetActive(false);
+        }
+        if (rankingOverlay != null)
+        {
+            rankingOverlay.SetActive(false);
         }
     }
 
@@ -47,5 +55,21 @@ public class MainMenuUI : MonoBehaviour
         Time.timeScale = 1f;
 
         SceneManager.LoadScene("InGameScene");
+    }
+
+    public void OpenRanking()
+    {
+        if (rankingOverlay != null)
+        {
+            rankingOverlay.SetActive(true);
+        }
+    }
+
+    public void CloseRanking()
+    {
+        if (rankingOverlay != null)
+        {
+            rankingOverlay.SetActive(false);
+        }
     }
 }
