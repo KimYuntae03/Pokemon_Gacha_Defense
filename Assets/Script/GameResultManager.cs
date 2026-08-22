@@ -41,6 +41,10 @@ public class GameResultManager : MonoBehaviour
     [SerializeField]
     private TMP_Text recordText;
 
+    [Header("플레이어 기록")]
+    [SerializeField]
+    private PlayerRecordManager playerRecordManager;
+
     private int currentEnemyCount;
 
     private int currentBossEnemyCount;
@@ -185,6 +189,15 @@ private void Update() //UI테스트용 코드
 
         gameEnded = true;
 
+        //게임 종료시 현재 웨이브 기록
+        if (playerRecordManager != null &&
+            waveManager != null)
+        {
+            playerRecordManager.SaveBestWave(
+                waveManager.CurrentWave
+            );
+        }
+
         if (resultText != null)
         {
             resultText.text =
@@ -210,6 +223,15 @@ private void Update() //UI테스트용 코드
         if (gameEnded)
         {
             return;
+        }
+
+        //게임 종료시 웨이브 기록
+        if (playerRecordManager != null &&
+            waveManager != null)
+        {
+            playerRecordManager.SaveBestWave(
+                waveManager.CurrentWave
+            );
         }
 
         gameEnded = true;
