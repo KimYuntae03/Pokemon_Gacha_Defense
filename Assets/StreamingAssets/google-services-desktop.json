@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "572874645209",
+    "project_id": "pokemon-gacha-defense",
+    "storage_bucket": "pokemon-gacha-defense.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:572874645209:android:a7de47f2cdc913b9b7e8c8",
+        "android_client_info": {
+          "package_name": "com.yuntae.pokemongachadefense"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZlTr9970ZFNGZQDsoDoptPKumD_w8sKE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
