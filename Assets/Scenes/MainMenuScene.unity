@@ -439,7 +439,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "<color=#FFD83D>1\uC704</color>             Player01            51"
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0b9201d2126efaf4da1afd1872e0a1d2, type: 2}
   m_sharedMaterial: {fileID: -1016349205651005262, guid: 0b9201d2126efaf4da1afd1872e0a1d2, type: 2}
@@ -1546,6 +1546,56 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 300401104}
   m_CullTransparentMesh: 1
+--- !u!1 &315080998
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 315081000}
+  - component: {fileID: 315080999}
+  m_Layer: 0
+  m_Name: RankingManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &315080999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 315080998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c81952148f6ec24b85b0a0bdcc1f285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RankingManager
+  rank1Text: {fileID: 188557380}
+  rank2Text: {fileID: 1542334314}
+  rank3Text: {fileID: 940695361}
+  rank4Text: {fileID: 811949833}
+  rank5Text: {fileID: 414783298}
+  myRankText: {fileID: 1546291920}
+--- !u!4 &315081000
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 315080998}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 963.7765, y: 547.6833, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &324413754
 GameObject:
   m_ObjectHideFlags: 0
@@ -2420,7 +2470,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "5\uC704            Player05            51"
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0b9201d2126efaf4da1afd1872e0a1d2, type: 2}
   m_sharedMaterial: {fileID: -1016349205651005262, guid: 0b9201d2126efaf4da1afd1872e0a1d2, type: 2}
@@ -3458,7 +3508,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u2605 RANKING \u2605"
+  m_text: "<color=#FF4040>\u2605</color> RANKING <color=#FF4040>\u2605</color>"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0b9201d2126efaf4da1afd1872e0a1d2, type: 2}
   m_sharedMaterial: {fileID: -1016349205651005262, guid: 0b9201d2126efaf4da1afd1872e0a1d2, type: 2}
@@ -4747,7 +4797,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "4\uC704            Player04            51"
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0b9201d2126efaf4da1afd1872e0a1d2, type: 2}
   m_sharedMaterial: {fileID: -1016349205651005262, guid: 0b9201d2126efaf4da1afd1872e0a1d2, type: 2}
@@ -5341,7 +5391,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &880174158
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5420,7 +5470,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "<color=#CD7F32>3\uC704</color>            Player03            51"
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0b9201d2126efaf4da1afd1872e0a1d2, type: 2}
   m_sharedMaterial: {fileID: -1016349205651005262, guid: 0b9201d2126efaf4da1afd1872e0a1d2, type: 2}
@@ -7077,7 +7127,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "<color=#D9D9D9>2\uC704</color>            Player02            51"
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0b9201d2126efaf4da1afd1872e0a1d2, type: 2}
   m_sharedMaterial: {fileID: -1016349205651005262, guid: 0b9201d2126efaf4da1afd1872e0a1d2, type: 2}
@@ -7857,6 +7907,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MainMenuUI
   guideOverlay: {fileID: 1080937434}
   rankingOverlay: {fileID: 685848590}
+  rankingManager: {fileID: 315080999}
 --- !u!4 &1710439552
 Transform:
   m_ObjectHideFlags: 0
@@ -8892,3 +8943,4 @@ SceneRoots:
   - {fileID: 1710439552}
   - {fileID: 2101406203}
   - {fileID: 1301960031}
+  - {fileID: 315081000}

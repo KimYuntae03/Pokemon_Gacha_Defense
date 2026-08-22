@@ -11,6 +11,9 @@ public class MainMenuUI : MonoBehaviour
     [SerializeField]
     private GameObject rankingOverlay;
 
+    [SerializeField]
+    private RankingManager rankingManager;
+
     private void Start()
     {
         if (guideOverlay != null)
@@ -62,6 +65,11 @@ public class MainMenuUI : MonoBehaviour
         if (rankingOverlay != null)
         {
             rankingOverlay.SetActive(true);
+        }
+
+        if (rankingManager != null)
+        {
+            rankingManager.LoadRanking();
         }
     }
 
