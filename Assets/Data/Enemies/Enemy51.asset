@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Enemy51
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   enemyName: ETERNATUS
-  maxHealth: 200000
+  maxHealth: 250000
   moveSpeed: 5.5
   animatorOverrideController: {fileID: 22100000, guid: e40fe1ada596ad74ab5009209a1951d9, type: 2}

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Enemy31
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   enemyName: Enemy 31
-  maxHealth: 1200
+  maxHealth: 1800
   moveSpeed: 5
   animatorOverrideController: {fileID: 22100000, guid: 08d5c5a42ff1e1a4890aa808f96b3b4d, type: 2}

@@ -16,5 +16,5 @@ MonoBehaviour:
   enemyData: {fileID: 11400000, guid: 8dc1b6b7f6ef2534f8ac5fb7764e51b4, type: 2}
   spawnCount: 1
   spawnInterval: 1.5
-  waveDuration: 30
+  waveDuration: 180
   isBossWave: 1

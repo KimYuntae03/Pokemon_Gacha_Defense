@@ -28,6 +28,8 @@ public class WaveManager : MonoBehaviour
 
     private int currentWaveIndex = 0;
 
+    private bool bossRewardGiven = false;
+
     public int CurrentWave
     {
         get
@@ -89,10 +91,14 @@ public class WaveManager : MonoBehaviour
         {
             WaveData currentWave = waves[currentWaveIndex];
 
-            if (currentWave.isBossWave &&
-                GameResultManager.Instance != null)
+            if (currentWave.isBossWave)
             {
-                GameResultManager.Instance.ResetBossEnemyCount();
+                bossRewardGiven = false;
+
+                if (GameResultManager.Instance != null)
+                {
+                    GameResultManager.Instance.ResetBossEnemyCount();
+                }
             }
 
             Debug.Log($"Wave {currentWave.waveNumber} 시작");
@@ -122,13 +128,6 @@ public class WaveManager : MonoBehaviour
                 GameResultManager.Instance.TriggerGameOver();
 
                 yield break;
-            }
-            if (currentWave.isBossWave &&
-                bossRewardManager != null)
-            {
-                bossRewardManager.GiveBossReward(
-                    currentWave.waveNumber
-                );
             }
 
             currentWaveIndex++;
@@ -169,9 +168,31 @@ public class WaveManager : MonoBehaviour
 
     public void BossWaveCleared()
     {
-        if (gameTimer != null)
+        if (currentWaveIndex >= waves.Length)
         {
-            gameTimer.StopWaveTimer();
+            return;
+        }
+
+        WaveData currentWave =
+            waves[currentWaveIndex];
+
+        if (!currentWave.isBossWave)
+        {
+            return;
+        }
+
+        if (bossRewardGiven)
+        {
+            return;
+        }
+
+        bossRewardGiven = true;
+
+        if (bossRewardManager != null)
+        {
+            bossRewardManager.GiveBossReward(
+                currentWave.waveNumber
+            );
         }
     }
 }

@@ -18,7 +18,7 @@ MonoBehaviour:
   animatorOverrideController: {fileID: 22100000, guid: f167b08fe9d2c1348827aed2ad9e3f4d, type: 2}
   attackDamage: 17
   attackInterval: 1.2
-  attackRange: 4
+  attackRange: 5
   attackPrefab: {fileID: 6785212003771102999, guid: 7d81a59c66698b142a246933e10dfa72, type: 3}
   attackType: 0
   useGlobalAttack: 0
